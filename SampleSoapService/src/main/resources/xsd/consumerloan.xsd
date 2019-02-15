@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.soap.sample.edu/jaxb"
+	xmlns:tns="http://www.soap.sample.edu/jaxb"
+	elementFormDefault="qualified">
+
+
+    <element name="PostConsumerLoanRequest">
+        <complexType>
+      <sequence>
+        <element name= "ConsumerLoan" type="tns:ConsumerLoan"/>
+      </sequence>  
+    </complexType>
+    </element>
+
+	<element name="PostConsumerLoanResponse">
+		<complexType>
+			<sequence>
+				<element name="status" type="string" />
+			</sequence>
+		</complexType>
+	</element>
+
+    <complexType name="ConsumerLoan">
+	<sequence>
+		<element name="loanNumber" type="string" />
+		<element name="loanType" type="string" />
+		<element name="loanAmount" type="decimal" />
+		<element name="ssn" type="string" />
+		<element name="creditScore" type="string" />
+		<element name="borrowerName" type="string" />
+	</sequence>
+    </complexType>
+
+
+</schema>

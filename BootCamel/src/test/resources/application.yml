@@ -1,0 +1,62 @@
+server.port: 9090
+
+camel.springboot.shutdownTimeout: 2
+
+spring:
+ profiles: 
+  active: dev
+  
+---
+spring:
+ profiles: mock
+ 
+startRoute: direct:input
+fromRoute: file:data/input?delete=true&readLock=none
+toRoute1: direct:output
+  
+---
+spring:
+ profiles: dev
+ datasource:
+   driver-class-name: org.postgresql.Driver
+   url: jdbc:postgresql://localhost:5432/postgres
+   username: postgres
+   password: postgres
+ mail:
+   host: smtp.gmail.com
+   port: 587
+   username: appalerts4roy@gmail.com
+   password: alertsroy123
+   properties.mail.smtp.auth: true
+   properties.mail.starttls.enable: true
+ activemq:
+   brokerurl: tcp://localhost:61616
+   user: admin
+   password: admin
+   
+mailto: appalerts4roy@gmail.com
+mailFrom: appalerts4roy@gmail.com
+message: Hello from dev profile
+fromRoute: activemq:IN
+toRoute: log:?level=INFO&showBody=true
+
+---
+spring:
+ profiles: stage
+ 
+startRoute: timer:hello?period=10s
+fromRoute: file:data/input?delete=true&readLock=none
+toRoute1: file:data/output
+ 
+message: Stage Environment
+
+---
+
+spring:
+ profiles: prod
+ 
+ startRoute: timer:hello?period=10s
+ fromRoute: file:data/input?delete=true&readLock=none
+ toRoute1: file:data/output
+ 
+ 

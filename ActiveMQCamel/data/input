@@ -1,0 +1,6 @@
+	{"transactionType":"ADD","sku":"100", "itemDescription":"Samsung TV", "price":"500.00"}
+	{"transactionType":"ADD","sku":"110", "itemDescription":"LG TV", "price":"450.00"}
+	{"transactionType":"ADD","sku":"120", "itemDescription":"Sony TV", "price":"700"}
+	
+	--
+	{"transactionType":"ADD","sku":"", "itemDescription":"TCL TV", "price":"350"}
