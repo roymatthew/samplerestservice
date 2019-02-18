@@ -42,7 +42,8 @@ message: Hello from dev profile
 fromRoute: activemq:IN
 consumerLoanRoute: activemq:clqueue
 #toRoute: log:?level=INFO&showBody=true
-toRoute: jdbc:datasource
+toRoute: http://localhost:9095/hello/camel
+#toRoute: jdbc:datasource
 healthRoute: healthRoute:timer:health?period=3s
 
 ---
